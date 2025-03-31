@@ -774,8 +774,6 @@
                 <button id="game14-button" onclick="openGame('nmines')">Открыть</button>
             </div>
         </div>
-
-
         <div class="game">
             <img src="2.png" alt="Royal Mines Preview">
             <div class="game-info">
@@ -790,7 +788,6 @@
                 <button id="game13-button" onclick="openGame('bomb')">Открыть</button>
             </div>
         </div>
-
         <div class="game">
             <img src="5.png" alt="Brawl Pirates Preview">
             <div class="game-info">
@@ -826,7 +823,6 @@
                 <button id="game9-button" onclick="openGame('mimines')">Открыть</button>
             </div>
         </div>
-
         <div class="game">
             <img src="16.jpg" alt="Balloon Preview">
             <div class="game-info">
@@ -844,7 +840,6 @@
     </div>
 </div>
 
-
 <div class="tab">
     <button class="tablinks games-icon" data-tab="Games" onclick="openTab(event, 'Games', this)">
         <img src="game.png" alt="Игры">
@@ -853,6 +848,7 @@
         <img src="money.png" alt="Контакты">
     </button>
 </div>
+
 
 
 
@@ -1280,73 +1276,49 @@ const translations = {
 };
 
 
-    function changeLanguage(lang) {
-        console.log("Changing language to: ", lang);
-        console.log("Translations for this language: ", translations[lang]);
+function changeLanguage(lang) {
+    console.log("Changing language to: ", lang);
 
-        if (translations[lang]) {
-            document.getElementById('game-picker-title').innerText = translations[lang].gamePickerTitle;
-            document.getElementById('detect-button').innerText = translations[lang].detectButton;
-            document.getElementById('start-button').innerText = translations[lang].startButton;
-
-            document.getElementById('game1-title').innerText = translations[lang].game1Title;
-            document.getElementById('game1-button').innerText = translations[lang].game1Button;
-
-            document.getElementById('game2-title').innerText = translations[lang].game2Title;
-            document.getElementById('game2-button').innerText = translations[lang].game2Button;
-
-            document.getElementById('game3-title').innerText = translations[lang].game3Title;
-            document.getElementById('game3-button').innerText = translations[lang].game3Button;
-
-            document.getElementById('game4-title').innerText = translations[lang].game4Title;
-            document.getElementById('game4-button').innerText = translations[lang].game4Button;
-
-            document.getElementById('game5-title').innerText = translations[lang].game5Title;
-            document.getElementById('game5-button').innerText = translations[lang].game5Button;
-
-            document.getElementById('game6-title').innerText = translations[lang].game6Title;
-            document.getElementById('game6-button').innerText = translations[lang].game6Button;
-
-            document.getElementById('game7-title').innerText = translations[lang].game7Title;
-            document.getElementById('game7-button').innerText = translations[lang].game7Button;
-
-            document.getElementById('game8-title').innerText = translations[lang].game8Title;
-            document.getElementById('game8-button').innerText = translations[lang].game8Button;
-
-            document.getElementById('game9-title').innerText = translations[lang].game9Title;
-            document.getElementById('game9-button').innerText = translations[lang].game9Button;
-
-            document.getElementById('game10-title').innerText = translations[lang].game10Title;
-            document.getElementById('game10-button').innerText = translations[lang].game10Button;
-
-            document.getElementById('game11-title').innerText = translations[lang].game11Title;
-            document.getElementById('game11-button').innerText = translations[lang].game11Button;
-
-            document.getElementById('game12-title').innerText = translations[lang].game12Title;
-            document.getElementById('game12-button').innerText = translations[lang].game12Button;
-            
-            document.getElementById('game13-title').innerText = translations[lang].game13Title;
-            document.getElementById('game13-button').innerText = translations[lang].game13Button;
-
-            document.getElementById('game14-title').innerText = translations[lang].game14Title;
-            document.getElementById('game14-button').innerText = translations[lang].game14Button;
-
-            document.getElementById('game15-title').innerText = translations[lang].game15Title;
-            document.getElementById('game15-button').innerText = translations[lang].game15Button;
-
-            document.getElementById('game16-title').innerText = translations[lang].game16Title;
-            document.getElementById('game16-button').innerText = translations[lang].game16Button;
-
-            document.getElementById('game17-title').innerText = translations[lang].game17Title;
-            document.getElementById('game17-button').innerText = translations[lang].game17Button;
-
-            // Обновляем текст для кнопок Telegram
-            document.getElementById('telegram-button').innerText = translations[lang].telegramButton;
-            document.getElementById('telegram-button2').innerText = translations[lang].telegramButton2;
-        } else {
-            console.error("Translations not found for language: ", lang);
-        }
+    if (!translations[lang]) {
+        console.error("Translations not found for language: ", lang);
+        return;
     }
+
+    let elements = [
+        { id: "game1-title", text: translations[lang].game1Title },
+        { id: "game1-button", text: translations[lang].game1Button },
+        { id: "game2-title", text: translations[lang].game2Title },
+        { id: "game2-button", text: translations[lang].game2Button },
+        { id: "game14-title", text: translations[lang].game14Title },
+        { id: "game14-button", text: translations[lang].game14Button },
+        { id: "game13-title", text: translations[lang].game13Title },
+        { id: "game13-button", text: translations[lang].game13Button },
+        { id: "game5-title", text: translations[lang].game5Title },
+        { id: "game5-button", text: translations[lang].game5Button },
+        { id: "game6-title", text: translations[lang].game6Title },
+        { id: "game6-button", text: translations[lang].game6Button },
+        { id: "game7-title", text: translations[lang].game7Title },
+        { id: "game7-button", text: translations[lang].game7Button },
+        { id: "game8-title", text: translations[lang].game8Title },
+        { id: "game8-button", text: translations[lang].game8Button },
+        { id: "game9-title", text: translations[lang].game9Title },
+        { id: "game9-button", text: translations[lang].game9Button },
+        { id: "game16-title", text: translations[lang].game16Title },
+        { id: "game16-button", text: translations[lang].game16Button },
+        { id: "game17-title", text: translations[lang].game17Title },
+        { id: "game17-button", text: translations[lang].game17Button }
+    ];
+
+    elements.forEach(({ id, text }) => {
+        let element = document.getElementById(id);
+        if (element) {
+            element.innerText = text;
+        } else {
+            console.warn(`Element with id '${id}' not found.`);
+        }
+    });
+}
+
 
 
 
