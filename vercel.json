@@ -2,21 +2,44 @@
   "version": 2,
   "builds": [
     {
-      "src": "**/*.html",
+      "src": "**/*.{html,js,css,png,jpg,jpeg,gif,svg,otf,ttf,woff,woff2,ico,mp3,json}",
       "use": "@vercel/static"
-    },
-    {
-      "src": "**/*.{js,css,png,jpg,jpeg,gif,svg,otf,ttf,woff,woff2,ico,mp3}",
-      "use": [
-        {
-          "src": "**/*",
-          "dest": "/"
-        }
-      ]
     }
   ],
   "routes": [
     { "src": "/mines/(.*)", "dest": "/mines/index.html" },
+    { "src": "/ball/(.*)", "dest": "/ball/index.html" },
+    { "src": "/bomb/(.*)", "dest": "/bomb/index.html" },
+    { "src": "/chicken/(.*)", "dest": "/chicken/index.html" },
+    { "src": "/coinios/(.*)", "dest": "/coinios/index.html" },
+    { "src": "/coinother/(.*)", "dest": "/coinother/index.html" },
+    { "src": "/dice/(.*)", "dest": "/dice/index.html" },
+    { "src": "/footx/(.*)", "dest": "/footx/index.html" },
+    { "src": "/goal/(.*)", "dest": "/goal/index.html" },
+    { "src": "/jet/(.*)", "dest": "/jet/index.html" },
+    { "src": "/mimines/(.*)", "dest": "/mimines/index.html" },
+    { "src": "/mines/(.*)", "dest": "/mines/index.html" },
+    { "src": "/minesind/(.*)", "dest": "/minesind/index.html" },
+    { "src": "/nmines/(.*)", "dest": "/nmines/index.html" },
+    { "src": "/penalty/(.*)", "dest": "/penalty/index.html" },
+    { "src": "/penalty1w/(.*)", "dest": "/penalty1w/index.html" },
+    { "src": "/queen/(.*)", "dest": "/queen/index.html" },
+    { "src": "/royal/(.*)", "dest": "/royal/index.html" },
+    { "src": "/speed/(.*)", "dest": "/speed/index.html" },
+    { "src": "/towers/(.*)", "dest": "/towers/index.html" },
+    { "src": "/turboD/(.*)", "dest": "/turboD/index.html" },
+    { "src": "/avi/(.*)", "dest": "/avi/index.html" },
+    { "src": "/ast/(.*)", "dest": "/ast/index.html" },
+    { "src": "/ba/(.*)", "dest": "/ba/index.html" },
+    { "src": "/brawl/(.*)", "dest": "/brawl/index.html" },
+    { "src": "/chi/(.*)", "dest": "/chi/index.html" },
+    { "src": "/cra/(.*)", "dest": "/cra/index.html" },
+    { "src": "/ho/(.*)", "dest": "/ho/index.html" },
+    { "src": "/met/(.*)", "dest": "/met/index.html" },
+    { "src": "/tro/(.*)", "dest": "/tro/index.html" },
+    { "src": "/BURJRX/(.*)", "dest": "/BURJRX/index.html" },
+    { "src": "/COLOR/(.*)", "dest": "/COLOR/index.html" },
+    { "src": "/(.*\\..*)", "dest": "/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

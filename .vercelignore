@@ -1,26 +1,7 @@
-# Ignore everything by default
-*.*
+# Include all files by default
+**/*
 
-# Allow specific files and directories
-!**/*.html
-!**/*.js
-!**/*.css
-!**/*.png
-!**/*.jpg
-!**/*.jpeg
-!**/*.gif
-!**/*.svg
-!**/*.otf
-!**/*.ttf
-!**/*.woff
-!**/*.woff2
-!**/*.ico
-!**/*.mp3
-!**/*.json
-!mines/**
-!images/**
-
-# Ignore development and system files
+# Exclude development and system files
 .git
 .gitignore
 .vercel
@@ -31,3 +12,9 @@ node_modules/
 .DS_Store
 Thumbs.db
 .env*
+README.md
+*.code-workspace
+*.sublime-*
+Gemfile*
+.jekyll*
+_site/
