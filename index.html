@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Игровой портал</title>
+    <!-- Добавляем инициализацию Telegram WebApp сразу в начало документа -->
+    <script>
+        // Очищаем URL от параметров Telegram для предотвращения их отображения
+        if (window.location.hash) {
+            history.replaceState(null, document.title, window.location.pathname);
+        }
+        if (window.location.search) {
+            history.replaceState(null, document.title, window.location.pathname);
+        }
+    </script>
     <script src="jquery.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
