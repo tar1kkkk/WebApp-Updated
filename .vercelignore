@@ -1,17 +1,33 @@
-# Ignore Jekyll and other unnecessary files
-Gemfile*
-.jekyll*
-_site/
-node_modules/
-*.log
-.DS_Store
-Thumbs.db
-.env*
-*.md
+# Ignore everything by default
+*.*
+
+# Allow specific files and directories
+!**/*.html
+!**/*.js
+!**/*.css
+!**/*.png
+!**/*.jpg
+!**/*.jpeg
+!**/*.gif
+!**/*.svg
+!**/*.otf
+!**/*.ttf
+!**/*.woff
+!**/*.woff2
+!**/*.ico
+!**/*.mp3
+!**/*.json
+!mines/**
+!images/**
+
+# Ignore development and system files
 .git
 .gitignore
 .vercel
 .vscode
 .idea
-*.sublime-*
-*.code-workspace
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+.env*

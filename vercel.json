@@ -2,14 +2,21 @@
   "version": 2,
   "builds": [
     {
-      "src": "**/*",
+      "src": "**/*.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "**/*.{js,css,png,jpg,jpeg,gif,svg,otf,ttf,woff,woff2,ico,mp3}",
+      "use": [
+        {
+          "src": "**/*",
+          "dest": "/"
+        }
+      ]
     }
   ],
-  "rewrites": [
-    { "source": "/mines/(.*)", "destination": "/mines/index.html" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "cleanUrls": true,
-  "trailingSlash": false
+  "routes": [
+    { "src": "/mines/(.*)", "dest": "/mines/index.html" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ]
 }
