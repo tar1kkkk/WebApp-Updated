@@ -1,5 +1,7 @@
 # Include all files by default
-**/*
+*
+!*/
+!**/*
 
 # Exclude only development and system files
 .git
