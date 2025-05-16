@@ -1,13 +1,17 @@
-# Ignore Jekyll files
-Gemfile
-Gemfile.lock
-.jekyll-metadata
+# Ignore Jekyll and other unnecessary files
+Gemfile*
+.jekyll*
 _site/
 node_modules/
 *.log
 .DS_Store
 Thumbs.db
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+*.md
+.git
+.gitignore
+.vercel
+.vscode
+.idea
+*.sublime-*
+*.code-workspace
