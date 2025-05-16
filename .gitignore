@@ -1,54 +1,65 @@
-# Игнорируем системные файлы
+# System files
 .DS_Store
 Thumbs.db
 
-# Игнорируем файлы редакторов
+# Editor directories and files
 .idea/
 .vscode/
 *.sublime-*
 
-# Игнорируем временные файлы
+# Temporary files
 *.tmp
 *.bak
 *.swp
 *~
 
-# Игнорируем лог-файлы
+# Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Игнорируем зависимости
+# Dependencies
 node_modules/
 
-# Игнорируем собранные файлы
+# Build outputs
 /dist
 /build
 
-# Игнорируем файлы окружения
+# Environment variables
 .env
 .env.local
 .env.*.local
 
-# Игнорируем резервные копии
+# Backup files
 *.bak
 *.orig
 *~
 
-# Игнорируем тестовые файлы
+# Test files
 /test
 /__tests__
 *.test.js
 *.spec.js
 
-# Игнорируем файлы пакетных менеджеров
+# Package manager files
 package-lock.json
 yarn.lock
 
-# Игнорируем настройки IDE
+# IDE settings
 .idea/
 .vscode/
+
+# Jekyll and GitHub Pages
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+Gemfile
+Gemfile.lock
+
+# Vercel
+.vercel/
 *.sublime-*
 
 # Игнорируем локальные настройки

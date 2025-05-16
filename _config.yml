@@ -1,53 +1,53 @@
-# Minimal Jekyll configuration
 # This file is kept for compatibility but Jekyll processing is disabled by .nojekyll
 
+# Disable Jekyll entirely
+safe: true
+include: []
+
 # Base settings
-baseurl: "" # Empty for root, or "/your-repo-name" if using GitHub Pages
-url: "" # Your site's base URL (e.g., "https://yourusername.github.io")
+baseurl: ""
+url: ""
 
 # Site settings
 title: "Игровой Портал"
 description: "Коллекция увлекательных игр"
 
-# Build settings
+# Disable all Jekyll processing
 markdown: kramdown
 plugins: []
 
-# Include all files (no Jekyll processing)
-include: ["*"]
-
-# Exclude these files from processing
+# Exclude everything to prevent processing
 exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - vendor/
-  - README.md
-  - package.json
-  - package-lock.json
+  - ./*
+  - ./*/**
+  - .github/
+  - .git/
   - .gitignore
   - .nojekyll
+  - README.md
+  - _config.yml
+  - vercel.json
+  - now.json
+  - package.json
+  - package-lock.json
+  - node_modules/
 
-# Disable Jekyll's default processing
+# Disable all collections and processing
+collections: {}
+defaults: []
+
+# Disable all Jekyll features
 future: false
 show_drafts: false
 limit_posts: 0
-keep_files: ["assets", "mines"]
+keep_files: []
 
-# Disable directory output for static site
+# Disable directory output
 permalink: none
-
-# Disable default collections
-collections: {}
-
-defaults: []
 
 # Disable feed generation
 feed:
   enabled: false
-
-# Настройки для GitHub Pages
-remote_theme: pages-themes/cayman@v0.2.0
 
 # Оптимизации
 compress_html:
