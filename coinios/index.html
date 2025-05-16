@@ -183,7 +183,7 @@
     <img src="tg.svg" alt="Telegram Icon" id="notification-icon">
     <div id="container3D"></div>
     <button id="flipButton">БРОСИТЬ</button>
-    <button id="returnButton" onclick="goBack()">Вернуться</button>
+    <button id="returnButton" class="back-button" onclick="redirectToMainMenu()">Вернуться</button>
 
     <div id="resultText"></div>
     <div id="nsgocio-container">
@@ -413,19 +413,7 @@ setTimeout(function() {
     document.dispatchEvent(event);
 }, 1000);
 </script>
-</body>
-</html> """
+
 <script src='../back-fix.js'></script>
-<script>
-    function goBack() {
-        window.location.replace('../index.html');
-    }
-    
-    // Обработка кнопки назад в браузере
-    window.addEventListener('popstate', function(event) {
-        goBack();
-    });
-    
-    // Добавляем запись в историю для обработки кнопки назад
-    history.pushState(null, document.title, window.location.href);
-</script>
+</body>
+</html>
