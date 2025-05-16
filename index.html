@@ -5,7 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Игровой портал</title>
     <script src="jquery.min.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
+        // Инициализация Telegram WebApp API
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                // Проверяем, доступен ли объект Telegram
+                if (window.Telegram && window.Telegram.WebApp) {
+                    console.log('Telegram WebApp API доступен');
+                    // Инициализация Telegram WebApp
+                    window.Telegram.WebApp.ready();
+                    // Настройка темы
+                    const colorScheme = window.Telegram.WebApp.colorScheme;
+                    document.body.setAttribute('data-theme', colorScheme);
+                    console.log('Тема Telegram: ' + colorScheme);
+                    // Настройка кнопки назад (если нужно)
+                    window.Telegram.WebApp.BackButton.hide();
+                    // Если нужно, можно получить пользовательские данные
+                    const initData = window.Telegram.WebApp.initData;
+                    console.log('Инициализация завершена, данные получены');
+                } else {
+                    console.warn('Telegram WebApp API недоступен, приложение открыто не из Telegram');
+                }
+            } catch (e) {
+                console.error('Ошибка инициализации Telegram WebApp:', e);
+            }
+        });
+        
         // Глобальная обработка ошибок JavaScript
         window.onerror = function(message, source, lineno, colno, error) {
             alert('Ошибка JavaScript: ' + message + '\nСтрока: ' + lineno + '\nИсточник: ' + source);
