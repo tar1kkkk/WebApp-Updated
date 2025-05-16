@@ -1,13 +1,13 @@
-﻿@font-face {
+@font-face {
     font-family: 'Halvar Breitschrift';
-    src: url('fonts/halvar_breitschrift.ttf') format('truetype');
+    src: url('/mines/fonts/halvar_breitschrift.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Intro';
-    src: url('fonts/intro.otf') format('opentype'); /* Убедитесь, что путь правильный */
+    src: url('/mines/fonts/intro.otf') format('opentype');
 }
 
 html, body {
