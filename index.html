@@ -25,7 +25,7 @@
         bgImg.onerror = function() {
             console.error('Ошибка загрузки фонового изображения');
         };
-        bgImg.src = '/fon.png';
+        bgImg.src = 'fon.png';
         
         // Проверка загрузки скриптов
         window.addEventListener('error', function(e) {
@@ -49,11 +49,11 @@
     <style>
         @font-face {
             font-family: 'Intro';
-            src: url('/intro.otf') format('opentype');
+            src: url('intro.otf') format('opentype');
         }
 
         body {
-            background: url('/fon.png') no-repeat center center fixed;
+            background: url('fon.png') no-repeat center center fixed;
             background-size: cover;
             background-color: #333; /* резервный цвет фона */
             color: #fff;
@@ -1008,7 +1008,7 @@
 
 <div class="tab">
     <button class="tablinks games-icon" data-tab="Games" onclick="openTab(event, 'Games', this)">
-        <img src="/game.png" alt="Игры">
+        <img src="game.png" alt="Игры">
     </button>
     <button class="tablinks contact-icon" data-tab="Contact" onclick="openTab(event, 'Contact', this)">
         <img src="/money.png" alt="Контакты">
@@ -1971,132 +1971,133 @@ function openGame(game) {
     triggerHapticFeedback();
     var ua = navigator.userAgent;
     var isIOS = /iPhone|iPad|iPod/i.test(ua);
+    var basePath = window.location.pathname.replace(/\/[^/]*$/, '');
 
     var links = {
         towers: {
-            ios: 'towers/index.html',
-            other: 'towers/index.html'
+            ios: basePath + '/towers/index.html',
+            other: basePath + '/towers/index.html'
         },
         nmines: {
-            ios: 'nmines/index.html',
-            other: 'nmines/index.html'
+            ios: basePath + '/nmines/index.html',
+            other: basePath + '/nmines/index.html'
         },
         royal: {
-            ios: 'royal/index.html',
-            other: 'royal/index.html'
+            ios: basePath + '/royal/index.html',
+            other: basePath + '/royal/index.html'
         },
         lucky: {
-            ios: 'jet/index.html',
-            other: 'jet/index.html'
+            ios: basePath + '/jet/index.html',
+            other: basePath + '/jet/index.html'
         },
         penalty: {
-            ios: 'penalty/index.html',
-            other: 'penalty/index.html'
+            ios: basePath + '/penalty/index.html',
+            other: basePath + '/penalty/index.html'
         },
         mimines: {
-            ios: 'mimines/index.html',
-            other: 'mimines/index.html'
+            ios: basePath + '/mimines/index.html',
+            other: basePath + '/mimines/index.html'
         },
         brawlPirates: {
-            ios: 'brawl/index.html',
-            other: 'brawl/index.html'
+            ios: basePath + '/brawl/index.html',
+            other: basePath + '/brawl/index.html'
         },
         aviator: {
-            ios: 'avi/index.html',
-            other: 'avi/index.html'
+            ios: basePath + '/avi/index.html',
+            other: basePath + '/avi/index.html'
         },
         footballX: {
-            ios: 'footx/index.html',
-            other: 'footx/index.html'
+            ios: basePath + '/footx/index.html',
+            other: basePath + '/footx/index.html'
         },
         coin: {
-            ios: 'coinios/index.html',
-            other: 'coinother/index.html'
+            ios: basePath + '/coinios/index.html',
+            other: basePath + '/coinother/index.html'
         },
         queen: {
-            ios: 'queen/index.html',
-            other: 'queen/index.html'
+            ios: basePath + '/queen/index.html',
+            other: basePath + '/queen/index.html'
         },
         tropicana: {
-            ios: 'tro/index.html',
-            other: 'tro/index.html'
+            ios: basePath + '/tro/index.html',
+            other: basePath + '/tro/index.html'
         },
         crash: {
-            ios: 'cra/index.html',
-            other: 'cra/index.html'
+            ios: basePath + '/cra/index.html',
+            other: basePath + '/cra/index.html'
         },
         bomb: {
-            ios: 'bomb/index.html',
-            other: 'bomb/index.html'
+            ios: basePath + '/bomb/index.html',
+            other: basePath + '/bomb/index.html'
         },
         ball: {
-            ios: 'ball/index.html',
-            other: 'ball/index.html'
+            ios: basePath + '/ball/index.html',
+            other: basePath + '/ball/index.html'
         },
         meta: {
-            ios: 'met/index.html',
-            other: 'met/index.html'
+            ios: basePath + '/met/index.html',
+            other: basePath + '/met/index.html'
         },
         goal: {
-            ios: 'goal/index.html',
-            other: 'goal/index.html'
+            ios: basePath + '/goal/index.html',
+            other: basePath + '/goal/index.html'
         },
         // Новые игры
         astronaut: {
-            ios: 'ast/index.html',
-            other: 'ast/index.html'
+            ios: basePath + '/ast/index.html',
+            other: basePath + '/ast/index.html'
         },
         color: {
-            ios: 'COLOR/index.html',
-            other: 'COLOR/index.html'
+            ios: basePath + '/COLOR/index.html',
+            other: basePath + '/COLOR/index.html'
         },
         turboMines: {
-            ios: 'turboD/index.html',
-            other: 'turboD/index.html'
+            ios: basePath + '/turboD/index.html',
+            other: basePath + '/turboD/index.html'
         },
         chickyRun: {
-            ios: 'chi/index.html',
-            other: 'chi/index.html'
+            ios: basePath + '/chi/index.html',
+            other: basePath + '/chi/index.html'
         },
         rocketX: {
-            ios: 'BURJRX/index.html',
-            other: 'BURJRX/index.html'
+            ios: basePath + '/BURJRX/index.html',
+            other: basePath + '/BURJRX/index.html'
         },
         speedCash: {
-            ios: 'speed/index.html',
-            other: 'speed/index.html'
+            ios: basePath + '/speed/index.html',
+            other: basePath + '/speed/index.html'
         },
         luckyJet: {
-            ios: 'jet/index.html',
-            other: 'jet/index.html'
+            ios: basePath + '/jet/index.html',
+            other: basePath + '/jet/index.html'
         },
         mineIsland: {
-            ios: 'minesind/index.html',
-            other: 'minesind/index.html'
+            ios: basePath + '/minesind/index.html',
+            other: basePath + '/minesind/index.html'
         },
         dice: {
-            ios: 'dice/index.html',
-            other: 'dice/index.html'
+            ios: basePath + '/dice/index.html',
+            other: basePath + '/dice/index.html'
         },
         penalty1w: {
-            ios: 'penalty1w/index.html',
-            other: 'penalty1w/index.html'
+            ios: basePath + '/penalty1w/index.html',
+            other: basePath + '/penalty1w/index.html'
         },
         hotline: {
-            ios: 'ho/index.html',
-            other: 'ho/index.html'
+            ios: basePath + '/ho/index.html',
+            other: basePath + '/ho/index.html'
         },
         chickenRoad: {
-            ios: 'chicken/index.html',
-            other: 'chicken/index.html'
+            ios: basePath + '/chicken/index.html',
+            other: basePath + '/chicken/index.html'
         },
         baBallon: {
-            ios: 'ba/index.html',
-            other: 'ba/index.html'
+            ios: basePath + '/ba/index.html',
+            other: basePath + '/ba/index.html'
         },
         mines: {
-            ios: 'mines/index.html',
-            other: 'mines/index.html'
+            ios: basePath + '/mines/index.html',
+            other: basePath + '/mines/index.html'
         }
     };
             var url = isIOS ? links[game].ios : links[game].other;
