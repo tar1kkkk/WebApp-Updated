@@ -14,10 +14,10 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
-    { "src": "/mines/(.*)", "dest": "/mines/index.html" },
-    { "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|otf|ttf|woff|woff2|ico|mp3|json))", "dest": "/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/mines/(.*)", "destination": "/mines/index.html" },
+    { "source": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|otf|ttf|woff|woff2|ico|mp3|json))", "destination": "/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {
