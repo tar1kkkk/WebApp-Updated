@@ -11,5 +11,11 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/mines/(.*)", "destination": "/mines/index.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
