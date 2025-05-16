@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Сигнал</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #1a1a1a;
+      background-image: url('back.PNG');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      position: relative;
+    }
+
+    .top-divider {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 30px;
+      background-color: #1d1e20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .tab {
+      position: fixed;
+      bottom: 0;
+      z-index: 10;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      background-color: #333;
+      padding: 10px 0;
+      border-radius: 50px;
+      height: 70px;
+    }
+
+    .tab button {
+      background-color: inherit;
+      flex: 1 0 auto;
+      margin: 0 10px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 20px;
+      transition: 0.3s;
+      color: #fff;
+      text-align: center;
+      border-radius: 50px;
+      font-size: 16px;
+      font-family: 'Intro', Arial, sans-serif;
+    }
+
+    .tab button img {
+      max-width: 38px;
+      height: 38px;
+    }
+
+    .tab button:hover {
+      background-color: #555;
+      transform: translateY(-2px);
+    }
+
+    .tab button.active {
+      background-color: #666;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    @media (max-width: 768px) {
+        .tab {
+            height: 70px; /* Фиксированная высота для планшетов */
+        }
+
+        .tab button {
+            margin: 0 5px;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .tab button img {
+            max-width: 32px;
+            height: 32px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .tab {
+            height: 70px; /* Фиксированная высота для мобильных устройств */
+        }
+
+
+        .tab button {
+            margin: 0 3px;
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .tab button img {
+            max-width: 28px;
+            height: 28px;
+        }
+    }
+
+
+    .divider-logo {
+      height: 35px;
+      width: 0px;
+      background-color: #1d1e20;
+      padding: 0px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .divider-logo img {
+      height: 100%;
+      width: auto;
+    }
+
+    .container {
+      background-color: #121212;
+      padding: 40px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 0 2px rgb(0,163,255);
+      text-align: center;
+      width: 100%;
+      max-width: 360px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .number {
+      font-size: 48px;
+      font-weight: bold;
+      text-decoration: underline;
+      min-height: 56px;
+      margin-bottom: 5px;
+      color: #ffffff;
+      text-decoration-color: #ffffff;
+    }
+
+    .initial-message {
+      font-size: 18px;
+      color: #cccccc;
+      margin-bottom: 5px;
+      min-height: 24px;
+    }
+
+    .label {
+      font-size: 40px;
+      font-weight: bold;
+      min-height: 48px;
+      margin-bottom: 20px;
+    }
+
+    .signal-btn {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(to right, #2065d1, #4dabf7);
+      border: none;
+      border-radius: 20px;
+      padding: 20px 40px;
+      color: #e6e6e6;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      transition: transform 0.1s ease;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background: linear-gradient(to right, #2065d1, #4dabf7);
+      border-radius: 10px;
+      width: 0%;
+      transition: width 1s ease;
+    }
+
+    .progress-wrapper {
+      background-color: #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0 10px;
+    }
+
+    .wait-text {
+      font-size: 16px;
+      color: #cccccc;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      height: 20px;
+    }
+
+    .visible {
+      opacity: 1;
+    }
+
+    .blue {
+      color: #4dabf7;
+    }
+
+    .red {
+      color: #f75b4d;
+    }
+
+    /* Кубик с валютами */
+    .spinner {
+      width: 25px;
+      height: 25px;
+      margin: 0 auto 20px;
+      perspective: 600px;
+      visibility: hidden;
+    }
+
+    .spinner.active {
+      visibility: visible;
+    }
+
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spin-cube 2s infinite linear;
+    }
+
+    .cube-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: 24px;
+      font-weight: bold;
+      color: #000;
+      background-color: #43a5ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0.5px solid #000000;
+      border-radius: 2px;
+      backface-visibility: hidden;
+    }
+
+    .spinner .front  { transform: rotateY(0deg) translateZ(12.5px); }
+    .spinner .back   { transform: rotateY(180deg) translateZ(12.5px); }
+    .spinner .right  { transform: rotateY(90deg) translateZ(12.5px); }
+    .spinner .left   { transform: rotateY(-90deg) translateZ(12.5px); }
+    .spinner .top    { transform: rotateX(90deg) translateZ(12.5px); }
+    .spinner .bottom { transform: rotateX(-90deg) translateZ(12.5px); }
+
+    @keyframes spin-cube {
+      0%   { transform: rotateX(0deg) rotateY(0deg); }
+      100% { transform: rotateX(360deg) rotateY(360deg); }
+    }
+
+    .back-button {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: 2px solid #0087ff;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 0 10px rgba(0, 135, 255, 0.5);
+    }
+
+    .back-button:hover {
+      background-color: rgba(0, 135, 255, 0.3);
+      box-shadow: 0 0 15px rgba(0, 135, 255, 0.8);
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="top-divider">
+    <div class="divider-logo">
+      <img src="https://100hp.app/dice/assets/onewin/header-logo-game.png" alt="Логотип">
+    </div>
+  </div>
+
+  <button class="back-button" onclick="window.location.href='../index.html'">Вернуться</button>
+
+  <div class="container">
+    <div>
+      <div class="initial-message" id="initial">Соединение установлено.</div>
+      <div class="number" id="number"></div>
+      <div class="label" id="label"></div>
+      <div class="spinner" id="spinner">
+        <div class="cube">
+          <div class="cube-face front">$</div>
+          <div class="cube-face back">€</div>
+          <div class="cube-face right">₽</div>
+          <div class="cube-face left">₺</div>
+          <div class="cube-face top">£</div>
+          <div class="cube-face bottom">¥</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button class="signal-btn" id="signalBtn">GET SIGNAL</button>
+      <div class="progress-wrapper">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+      <div class="wait-text" id="waitText">Пожалуйста, подождите</div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <button class="tablinks games-icon" data-tab="Games" onclick="window.location.href='../index.html'">
+      <img src="static/back.png" alt="Игры">
+    </button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('signalBtn');
+    const label = document.getElementById('label');
+    const number = document.getElementById('number');
+    const initial = document.getElementById('initial');
+    const progressBar = document.getElementById('progressBar');
+    const waitText = document.getElementById('waitText');
+    const spinner = document.getElementById('spinner');
+
+    btn.addEventListener('click', () => {
+      label.textContent = '';
+      number.textContent = '';
+      initial.textContent = '';
+      label.className = 'label';
+      number.className = 'number';
+      spinner.classList.add('active');
+      waitText.classList.add('visible');
+      progressBar.style.width = '0%';
+
+      setTimeout(() => {
+        const isMore = Math.random() < 0.5;
+        const resultText = isMore ? 'БОЛЬШЕ' : 'МЕНЬШЕ';
+        const resultNumber = isMore
+          ? Math.floor(Math.random() * (99 - 3 + 1)) + 3
+          : Math.floor(Math.random() * (98 - 2 + 1)) + 2;
+
+        spinner.classList.remove('active');
+
+        label.textContent = resultText;
+        label.className = 'label ' + (isMore ? 'blue' : 'red');
+
+        number.textContent = resultNumber;
+        number.style.color = '#ffffff';
+        number.style.textDecorationColor = '#ffffff';
+
+        progressBar.style.width = '100%';
+
+        setTimeout(() => {
+          waitText.classList.remove('visible');
+          progressBar.style.width = '0%';
+        }, 1200);
+      }, 1000);
+    });
+  </script>
+
+<script>
+// Скрипт для исправления кнопок "назад"
+document.addEventListener('DOMContentLoaded', function() {
+    // Функция для перехвата клика и перенаправления на главное меню
+    function redirectToMainMenu(e) {
+        if (e) e.preventDefault();
+        window.location.href = '../index.html';
+        return false;
+    }
+
+    // Находим все кнопки/ссылки, которые могут вести на GitHub Pages или назад
+    const backButtons = document.querySelectorAll(
+        'a[href*="github.io"], a[href*="back"], a[href="../index.html"], a[href="../index.html"], a[href="../index.html"], ' +
+        'button.back, .back-button, .btn-back, .back, .home-button, .menu-button, ' +
+        'a.back, a.home, a.menu, button[data-action="back"], [aria-label="Back"], ' +
+        '[aria-label="Home"], [aria-label="Menu"], .header__back, .header-back'
+    );
+    
+    // Изменяем их URL на наше меню
+    backButtons.forEach(function(button) {
+        button.addEventListener('click', redirectToMainMenu);
+        // Также заменяем href атрибут, если это ссылка
+        if (button.tagName.toLowerCase() === 'a') {
+            button.href = '../index.html';
+        }
+    });
+    
+    // Добавляем обработчик для кнопок с обработчиками onclick
+    const allButtons = document.querySelectorAll('button, a, div, span');
+    allButtons.forEach(function(button) {
+        const onclickAttr = button.getAttribute('onclick');
+        if (onclickAttr && (
+            onclickAttr.includes('back') || 
+            onclickAttr.includes('home') || 
+            onclickAttr.includes('menu') || 
+            onclickAttr.includes('return') || 
+            onclickAttr.includes('exit')
+        )) {
+            button.onclick = redirectToMainMenu;
+        }
+    });
+
+    // Обработка клавиш навигации
+    window.addEventListener('keydown', function(e) {
+        // Обработка клавиши Escape (Esc)
+        if (e.key === 'Escape') {
+            redirectToMainMenu();
+        }
+    });
+
+    // Перехватываем нажатие на кнопку назад в браузере
+    window.addEventListener('popstate', function() {
+        redirectToMainMenu();
+        // Предотвращаем дальнейшую навигацию назад
+        history.pushState(null, document.title, window.location.href);
+    });
+
+    // Добавляем запись в историю, чтобы можно было перехватить нажатие кнопки назад
+    history.pushState(null, document.title, window.location.href);
+});
+
+// Запускаем скрипт сразу и повторно через небольшую задержку, чтобы перехватить динамически добавленные элементы
+setTimeout(function() {
+    const event = new Event('DOMContentLoaded');
+    document.dispatchEvent(event);
+}, 1000);
+</script>
+</body>
+</html>
+<script src='../back-fix.js'></script>

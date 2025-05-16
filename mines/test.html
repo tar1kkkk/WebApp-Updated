@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mines Test</title>
+    <style>
+        @font-face {
+            font-family: 'Halvar Breitschrift';
+            src: url('fonts/halvar_breitschrift.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Halvar Breitschrift', Arial, sans-serif;
+            padding: 20px;
+            background-color: #090F1E;
+            color: white;
+        }
+        .test-image {
+            max-width: 200px;
+            margin: 10px 0;
+            border: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mines Test Page</h1>
+    
+    <h2>Шрифт Halvar Breitschrift:</h2>
+    <p style="font-size: 24px;">Проверка русского текста</p>
+    <p style="font-size: 24px;">The quick brown fox jumps over the lazy dog</p>
+    
+    <h2>Изображения:</h2>
+    <div>
+        <div>1win.svg: <img src="images/1win.svg" alt="1win" class="test-image"></div>
+        <div>back.png: <img src="images/back.png" alt="back" class="test-image"></div>
+        <div>minus.png: <img src="images/minus.png" alt="minus" class="test-image"></div>
+        <div>plus.png: <img src="images/plus.png" alt="plus" class="test-image"></div>
+    </div>
+    
+    <h2>Флаги:</h2>
+    <div>
+        <img src="flags/ru.png" alt="Russian" style="width: 50px; margin: 5px;">
+        <img src="flags/en.png" alt="English" style="width: 50px; margin: 5px;">
+    </div>
+    
+    <h2>Консоль:</h2>
+    <p>Откройте консоль разработчика (F12) и проверьте наличие ошибок загрузки ресурсов.</p>
+    
+    <script>
+        console.log('Script loaded successfully');
+        
+        // Проверка загрузки шрифтов
+        document.fonts.ready.then(() => {
+            console.log('Fonts loaded:', document.fonts.check('16px Halvar Breitschrift'));
+        }).catch(err => {
+            console.error('Error loading fonts:', err);
+        });
+    </script>
+</body>
+</html>

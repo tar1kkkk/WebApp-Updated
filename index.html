@@ -4,6 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Игровой портал</title>
+    <script src="jquery.min.js"></script>
+    <script>
+        // Глобальная обработка ошибок JavaScript
+        window.onerror = function(message, source, lineno, colno, error) {
+            alert('Ошибка JavaScript: ' + message + '\nСтрока: ' + lineno + '\nИсточник: ' + source);
+            document.body.innerHTML += '<div style="background:red;color:white;padding:20px;position:fixed;bottom:0;left:0;right:0;z-index:9999"><h3>Ошибка JavaScript</h3><p>' + message + '</p><p>Строка: ' + lineno + '</p></div>';
+            return false;
+        };
+        
+        // Отладочная информация
+        console.log('Страница загружается...');
+        console.log('Шрифт intro.otf:', document.fonts.check('12px Intro') ? 'загружен' : 'не загружен');
+        
+        // Проверка загрузки фона
+        const bgImg = new Image();
+        bgImg.onload = function() {
+            console.log('Фоновое изображение загружено');
+        };
+        bgImg.onerror = function() {
+            console.error('Ошибка загрузки фонового изображения');
+        };
+        bgImg.src = 'fon.png';
+        
+        // Проверка загрузки скриптов
+        window.addEventListener('error', function(e) {
+            console.error('Ошибка загрузки скрипта:', e.filename, 'Ошибка:', e.message);
+            console.error('Error details:', e);
+        }, true);
+
+        // Проверка загрузки CSS
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM полностью загружен');
+            console.log('Body visibility:', window.getComputedStyle(document.body).visibility);
+            console.log('Body display:', window.getComputedStyle(document.body).display);
+            console.log('Body opacity:', window.getComputedStyle(document.body).opacity);
+        });
+
+        // Проверка загрузки шрифта
+        document.fonts.ready.then(function() {
+            console.log('Шрифты загружены:', document.fonts.check('12px Intro'));
+        });
+    </script>
     <style>
         @font-face {
             font-family: 'Intro';
@@ -13,6 +55,7 @@
         body {
             background: url('fon.png') no-repeat center center fixed;
             background-size: cover;
+            background-color: #333; /* резервный цвет фона */
             color: #fff;
             font-family: 'Intro', Arial, sans-serif;
             margin: 0;
@@ -315,6 +358,7 @@
             color: white;
             background: linear-gradient(to right, #6a3093, #a044ff);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-top: 0px;
             display: block;
@@ -372,7 +416,7 @@
 
         .image-container img {
             margin-top: 20px;
-            margin-left: 45px
+            margin-left: 45px;
             width: 190px;
             height: 140px;
             border-radius: 50%;
@@ -528,7 +572,7 @@
         .dots-container {
             text-align: center;
             padding: 10px;
-            background: #white;
+            background: white;
         }
 
         .dot {
@@ -760,6 +804,7 @@
 <div id="Games" class="tabcontent active">
 
     <div class="row">
+        <!-- Оригинальные игры -->
         <div class="game">
             <img src="1.png" alt="Mines Preview">
             <div class="game-info">
@@ -837,6 +882,127 @@
                 <button id="game17-button" onclick="openGame('goal')">Открыть</button>
             </div>
         </div>
+        
+        <!-- Новые игры -->
+        <div class="game">
+            <img src="images/astronaut.jpg" alt="Astronaut" onerror="this.src='images/default.png'">
+            <h3 id="game-astronaut-title">Astronaut</h3>
+            <button class="game-button" id="game-astronaut-button" onclick="openGame('astronaut')">Открыть</button>
+        </div>
+        <div class="game">
+            <img src="images/color.png" alt="Color Prediction" onerror="this.src='images/default.png'">
+            <h3 id="game-color-title">Color Prediction</h3>
+            <button class="game-button" id="game-color-button" onclick="openGame('color')">Открыть</button>
+        </div>
+        <div class="game">
+            <img src="images/crash.png" alt="Crash Preview" onerror="this.src='cra/images/logo.webp'">
+            <div class="game-info">
+                <h3 id="game-crash-title">Crash</h3>
+                <button id="game-crash-button" onclick="openGame('crash')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/meta-crash.png" alt="Meta Crash Preview" onerror="this.src='met/images/logo.png'">
+            <div class="game-info">
+                <h3 id="game-meta-title">Meta Crash</h3>
+                <button id="game-meta-button" onclick="openGame('meta')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/turbo.png" alt="Turbo Mines" onerror="this.src='images/default.png'">
+            <h3 id="game-turbo-title">Turbo Mines</h3>
+            <button class="game-button" id="game-turbo-button" onclick="openGame('turboMines')">Открыть</button>
+        </div>
+        <div class="game">
+            <img src="images/chicky.jpg" alt="Chicky Run" onerror="this.src='images/default.png'">
+            <h3 id="game-chicky-title">Chicky Run</h3>
+            <button class="game-button" id="game-chicky-button" onclick="openGame('chickyRun')">Открыть</button>
+        </div>
+        <div class="game">
+            <img src="images/rocketx.jpg" alt="RocketX Preview" onerror="this.src='BURJRX/images/icon.webp'">
+            <div class="game-info">
+                <h3 id="game-rocketx-title">RocketX</h3>
+                <button id="game-rocketx-button" onclick="openGame('rocketX')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/aviator.png" alt="Aviator" onerror="this.src='images/default.png'">
+            <h3 id="game-aviator-title">Aviator</h3>
+            <button class="game-button" id="game-aviator-button" onclick="openGame('aviator')">Открыть</button>
+        </div>
+        <div class="game">
+            <img src="images/tropicana.png" alt="Tropicana Preview" onerror="this.src='tro/images/logo.png'">
+            <div class="game-info">
+                <h3 id="game-tropicana-title">Tropicana</h3>
+                <button id="game-tropicana-button" onclick="openGame('tropicana')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/speed-cash.png" alt="Speed & Cash Preview" onerror="this.src='speed/images/speed_logo.svg'">
+            <div class="game-info">
+                <h3 id="game-speed-title">Speed & Cash</h3>
+                <button id="game-speed-button" onclick="openGame('speedCash')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/queen.png" alt="Rocket Queen" onerror="this.src='images/default.png'">
+            <h3 id="game-queen-title">Rocket Queen</h3>
+            <button class="game-button" id="game-queen-button" onclick="openGame('queen')">Открыть</button>
+        </div>
+        <div class="game">
+            <img src="images/luckyjet.png" alt="Lucky Jet Preview" onerror="this.src='jet/images/Lucky.svg'">
+            <div class="game-info">
+                <h3 id="game-luckyjet-title">Lucky Jet</h3>
+                <button id="game-luckyjet-button" onclick="openGame('luckyJet')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/mineisland.jpg" alt="Mine Island" onerror="this.src='images/default.png'">
+            <h3 id="game-mineisland-title">Mine Island</h3>
+            <button class="game-button" id="game-mineisland-button" onclick="openGame('mineIsland')">Открыть</button>
+        </div>
+        <div class="game">
+            <img src="images/dice.avif" alt="Dice Preview" onerror="this.src='dice/static/back.png'">
+            <div class="game-info">
+                <h3 id="game-dice-title">Dice</h3>
+                <button id="game-dice-button" onclick="openGame('dice')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/penalty1w.avif" alt="Penalty 1win Preview" onerror="this.src='penalty1w/static/football.png'">
+            <div class="game-info">
+                <h3 id="game-penalty1w-title">Penalty 1win</h3>
+                <button id="game-penalty1w-button" onclick="openGame('penalty1w')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/hotline.avif" alt="Hotline Preview" onerror="this.src='ho/hotline.png'">
+            <div class="game-info">
+                <h3 id="game-hotline-title">Hotline</h3>
+                <button id="game-hotline-button" onclick="openGame('hotline')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/chicken-road.png" alt="Chicken Road Preview" onerror="this.src='chicken/chicks.jpg'">
+            <div class="game-info">
+                <h3 id="game-chicken-title">Chicken Road</h3>
+                <button id="game-chicken-button" onclick="openGame('chickenRoad')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/ba-ballon.avif" alt="Ba Ballon Preview" onerror="this.src='ba/airballoon.png'">
+            <div class="game-info">
+                <h3 id="game-baballon-title">Ba Ballon</h3>
+                <button id="game-baballon-button" onclick="openGame('baBallon')">Открыть</button>
+            </div>
+        </div>
+        <div class="game">
+            <img src="images/towers.jpg" alt="Towers Preview" onerror="this.src='towers/static/1.jpg'">
+            <div class="game-info">
+                <h3 id="game-towers-title">Towers</h3>
+                <button id="game-towers-button" onclick="openGame('towers')">Открыть</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -901,6 +1067,45 @@ const translations = {
         game16Button: "Открыть",
         game17Title: "Goal",
         game17Button: "Открыть",
+        // Новые игры
+        gameAstronautTitle: "Astronaut",
+        gameAstronautButton: "Открыть",
+        gameColorTitle: "Color",
+        gameColorButton: "Открыть",
+        gameCrashTitle: "Crash",
+        gameCrashButton: "Открыть",
+        gameMetaTitle: "Meta Crash",
+        gameMetaButton: "Открыть",
+        gameTurboTitle: "Turbo Mines",
+        gameTurboButton: "Открыть",
+        gameChickyTitle: "Chicky Run",
+        gameChickyButton: "Открыть",
+        gameRocketXTitle: "RocketX",
+        gameRocketXButton: "Открыть",
+        gameAviatorTitle: "Aviator",
+        gameAviatorButton: "Открыть",
+        gameTropicanaTitle: "Tropicana",
+        gameTropicanaButton: "Открыть",
+        gameSpeedTitle: "Speed & Cash",
+        gameSpeedButton: "Открыть",
+        gameQueenTitle: "Rocket Queen",
+        gameQueenButton: "Открыть",
+        gameLuckyJetTitle: "Lucky Jet",
+        gameLuckyJetButton: "Открыть",
+        gameMineIslandTitle: "Mine Island",
+        gameMineIslandButton: "Открыть",
+        gameDiceTitle: "Dice",
+        gameDiceButton: "Открыть",
+        gamePenalty1wTitle: "Penalty 1win",
+        gamePenalty1wButton: "Открыть",
+        gameHotlineTitle: "Hotline",
+        gameHotlineButton: "Открыть",
+        gameChickenRoadTitle: "Chicken Road",
+        gameChickenRoadButton: "Открыть",
+        gameBaBallonTitle: "Ba Ballon",
+        gameBaBallonButton: "Открыть",
+        gameTowersTitle: "Towers",
+        gameTowersButton: "Открыть",
         telegramButton: "Перейти в телеграм (RU)",
         telegramButton2: "Перейти в телеграм (EN)"
     },
@@ -1285,6 +1490,7 @@ function changeLanguage(lang) {
     }
 
     let elements = [
+        // Оригинальные игры
         { id: "game1-title", text: translations[lang].game1Title },
         { id: "game1-button", text: translations[lang].game1Button },
         { id: "game2-title", text: translations[lang].game2Title },
@@ -1306,7 +1512,45 @@ function changeLanguage(lang) {
         { id: "game16-title", text: translations[lang].game16Title },
         { id: "game16-button", text: translations[lang].game16Button },
         { id: "game17-title", text: translations[lang].game17Title },
-        { id: "game17-button", text: translations[lang].game17Button }
+        { id: "game17-button", text: translations[lang].game17Button },
+        
+        // Новые игры
+        { id: "game-astronaut-title", text: translations[lang].gameAstronautTitle || "Astronaut" },
+        { id: "game-astronaut-button", text: translations[lang].gameAstronautButton || translations[lang].game1Button },
+        { id: "game-color-title", text: translations[lang].gameColorTitle || "Color" },
+        { id: "game-color-button", text: translations[lang].gameColorButton || translations[lang].game1Button },
+        { id: "game-crash-title", text: translations[lang].gameCrashTitle || "Crash" },
+        { id: "game-crash-button", text: translations[lang].gameCrashButton || translations[lang].game1Button },
+        { id: "game-meta-title", text: translations[lang].gameMetaTitle || "Meta Crash" },
+        { id: "game-meta-button", text: translations[lang].gameMetaButton || translations[lang].game1Button },
+        { id: "game-turbo-title", text: translations[lang].gameTurboTitle || "Turbo Mines" },
+        { id: "game-turbo-button", text: translations[lang].gameTurboButton || translations[lang].game1Button },
+        { id: "game-chicky-title", text: translations[lang].gameChickyTitle || "Chicky Run" },
+        { id: "game-chicky-button", text: translations[lang].gameChickyButton || translations[lang].game1Button },
+        { id: "game-rocketx-title", text: translations[lang].gameRocketXTitle || "RocketX" },
+        { id: "game-rocketx-button", text: translations[lang].gameRocketXButton || translations[lang].game1Button },
+        { id: "game-aviator-title", text: translations[lang].gameAviatorTitle || "Aviator" },
+        { id: "game-aviator-button", text: translations[lang].gameAviatorButton || translations[lang].game1Button },
+        { id: "game-tropicana-title", text: translations[lang].gameTropicanaTitle || "Tropicana" },
+        { id: "game-tropicana-button", text: translations[lang].gameTropicanaButton || translations[lang].game1Button },
+        { id: "game-speed-title", text: translations[lang].gameSpeedTitle || "Speed & Cash" },
+        { id: "game-speed-button", text: translations[lang].gameSpeedButton || translations[lang].game1Button },
+        { id: "game-queen-title", text: translations[lang].gameQueenTitle || "Rocket Queen" },
+        { id: "game-queen-button", text: translations[lang].gameQueenButton || translations[lang].game1Button },
+        { id: "game-luckyjet-title", text: translations[lang].gameLuckyJetTitle || "Lucky Jet" },
+        { id: "game-luckyjet-button", text: translations[lang].gameLuckyJetButton || translations[lang].game1Button },
+        { id: "game-mineisland-title", text: translations[lang].gameMineIslandTitle || "Mine Island" },
+        { id: "game-mineisland-button", text: translations[lang].gameMineIslandButton || translations[lang].game1Button },
+        { id: "game-dice-title", text: translations[lang].gameDiceTitle || "Dice" },
+        { id: "game-dice-button", text: translations[lang].gameDiceButton || translations[lang].game1Button },
+        { id: "game-penalty1w-title", text: translations[lang].gamePenalty1wTitle || "Penalty 1win" },
+        { id: "game-penalty1w-button", text: translations[lang].gamePenalty1wButton || translations[lang].game1Button },
+        { id: "game-hotline-title", text: translations[lang].gameHotlineTitle || "Hotline" },
+        { id: "game-hotline-button", text: translations[lang].gameHotlineButton || translations[lang].game1Button },
+        { id: "game-chicken-title", text: translations[lang].gameChickenRoadTitle || "Chicken Road" },
+        { id: "game-chicken-button", text: translations[lang].gameChickenRoadButton || translations[lang].game1Button },
+        { id: "game-baballon-title", text: translations[lang].gameBaBallonTitle || "Ba Ballon" },
+        { id: "game-baballon-button", text: translations[lang].gameBaBallonButton || translations[lang].game1Button }
     ];
 
     elements.forEach(({ id, text }) => {
@@ -1363,14 +1607,28 @@ function changeLanguage(lang) {
             var slides = document.getElementsByClassName("slide");
             var dots = document.getElementsByClassName("dot");
             var slidesContainer = document.querySelector(".slides");
+            
+            // Проверяем, существуют ли все необходимые элементы
+            if (!slides || slides.length === 0 || !dots || dots.length === 0 || !slidesContainer) {
+                console.log('Элементы слайдера не найдены');
+                return; // Прекращаем выполнение функции, если элементы не найдены
+            }
 
             if (n > slides.length) {slideIndex = 1}
             if (n < 1) {slideIndex = slides.length}
+            
+            // Обновляем классы точек
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
+            
+            // Перемещаем контейнер слайдов
             slidesContainer.style.transform = `translateX(${-(slideIndex - 1) * 100 / slides.length}%)`;
-            dots[slideIndex - 1].className += " active";
+            
+            // Добавляем активный класс текущей точке
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].className += " active";
+            }
         }
 
         function openTab(evt, tabName, button) {
@@ -1422,66 +1680,98 @@ function changeLanguage(lang) {
 
 
 
-        const canvas = document.getElementById('particleCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        let particlesArray = [];
+        // Код для анимации частиц
+        function initParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            
+            // Проверяем, существует ли элемент canvas
+            if (!canvas) {
+                console.warn('Не найден элемент particleCanvas');
+                return; // Выходим из функции, чтобы избежать ошибок
+            }
+            
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+                console.warn('Не удалось получить контекст рисования');
+                return;
+            }
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            let particlesArray = [];
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 5 + 1;
-                this.speedX = Math.random() * 3 - 1.5;
-                this.speedY = Math.random() * 3 - 1.5;
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 5 + 1;
+                    this.speedX = Math.random() * 3 - 1.5;
+                    this.speedY = Math.random() * 3 - 1.5;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.size > 0.2) this.size -= 0.1;
+                }
+                draw() {
+                    ctx.fillStyle = 'rgba(255,255,255,0.8)';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
             }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.size > 0.2) this.size -= 0.1;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(255,255,255,0.8)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
 
-        function init() {
-            for (let i = 0; i < 100; i++) {
-                particlesArray.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-                particlesArray[i].draw();
-                if (particlesArray[i].size <= 0.3) {
-                    particlesArray.splice(i, 1);
-                    i--;
+            function init() {
+                for (let i = 0; i < 100; i++) {
                     particlesArray.push(new Particle());
                 }
             }
-            requestAnimationFrame(animate);
-        }
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                    particlesArray[i].draw();
+                    if (particlesArray[i].size <= 0.3) {
+                        particlesArray.splice(i, 1);
+                        i--;
+                        particlesArray.push(new Particle());
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+            
+            // Запускаем анимацию
+            init();
+            animate();
+        }
+        
+        // Вызываем функцию после загрузки страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initParticles, 1000); // Небольшая задержка для уверенности, что DOM полностью загружен
         });
 
 
 
-        init();
-        animate();
+        // Анимация запускается внутри функции initParticles()
         const typingText = document.querySelector('.typing-text');
         const phrases = [
-
+            "Добро пожаловать в игровой портал!",
+            "Выберите свою любимую игру!",
+            "Приятного времяпрепровождения!"
         ];
+        
+        // Проверка, есть ли элемент и фразы
+        if (!typingText || !phrases.length) {
+            console.warn('Отсутствует элемент typing-text или массив phrases пуст');
+            // Выходим из функции, чтобы избежать ошибок
+        }
+        
         let phraseIndex = 0;
         let letterIndex = 0;
         let currentPhrase = [];
@@ -1489,6 +1779,17 @@ function changeLanguage(lang) {
         let delay = 60;
 
         function type() {
+            // Проверяем, есть ли элемент и массив фраз
+            if (!typingText || !phrases || phrases.length === 0) {
+                console.warn('Невозможно отобразить анимацию печати: нет элемента или фраз');
+                return; // Выходим из функции, если нет необходимых элементов
+            }
+
+            // Проверяем, что доступны все индексы для предотвращения ошибок
+            if (phraseIndex >= phrases.length) {
+                phraseIndex = 0;
+            }
+            
             if (isDeleting && currentPhrase.length === 0) {
                 phraseIndex = (phraseIndex + 1) % phrases.length;
                 letterIndex = 0;
@@ -1497,7 +1798,7 @@ function changeLanguage(lang) {
                     setTimeout(type, 2000);
                     return;
                 }
-            } else if (!isDeleting && currentPhrase.length === phrases[phraseIndex].length) {
+            } else if (!isDeleting && phrases[phraseIndex] && currentPhrase.length === phrases[phraseIndex].length) {
                 isDeleting = true;
                 delay = 2500;
             }
@@ -1672,9 +1973,9 @@ function openGame(game) {
     var isIOS = /iPhone|iPad|iPod/i.test(ua);
 
     var links = {
-        mines: {
-            ios: 'mines/index.html',
-            other: 'mines/index.html'
+        towers: {
+            ios: 'towers/index.html',
+            other: 'towers/index.html'
         },
         nmines: {
             ios: 'nmines/index.html',
@@ -1717,12 +2018,12 @@ function openGame(game) {
             other: 'queen/index.html'
         },
         tropicana: {
-            ios: 'trop/index.html',
-            other: 'trop/index.html'
+            ios: 'tro/index.html',
+            other: 'tro/index.html'
         },
         crash: {
-            ios: 'crash/index.html',
-            other: 'crash/index.html'
+            ios: 'cra/index.html',
+            other: 'cra/index.html'
         },
         bomb: {
             ios: 'bomb/index.html',
@@ -1733,12 +2034,69 @@ function openGame(game) {
             other: 'ball/index.html'
         },
         meta: {
-            ios: 'meta/index.html',
-            other: 'meta/index.html'
+            ios: 'met/index.html',
+            other: 'met/index.html'
         },
         goal: {
             ios: 'goal/index.html',
             other: 'goal/index.html'
+        },
+        // Новые игры
+        astronaut: {
+            ios: 'ast/index.html',
+            other: 'ast/index.html'
+        },
+        color: {
+            ios: 'COLOR/index.html',
+            other: 'COLOR/index.html'
+        },
+        turboMines: {
+            ios: 'turboD/index.html',
+            other: 'turboD/index.html'
+        },
+        chickyRun: {
+            ios: 'chi/index.html',
+            other: 'chi/index.html'
+        },
+        rocketX: {
+            ios: 'BURJRX/index.html',
+            other: 'BURJRX/index.html'
+        },
+        speedCash: {
+            ios: 'speed/index.html',
+            other: 'speed/index.html'
+        },
+        luckyJet: {
+            ios: 'jet/index.html',
+            other: 'jet/index.html'
+        },
+        mineIsland: {
+            ios: 'minesind/index.html',
+            other: 'minesind/index.html'
+        },
+        dice: {
+            ios: 'dice/index.html',
+            other: 'dice/index.html'
+        },
+        penalty1w: {
+            ios: 'penalty1w/index.html',
+            other: 'penalty1w/index.html'
+        },
+        hotline: {
+            ios: 'ho/index.html',
+            other: 'ho/index.html'
+        },
+        chickenRoad: {
+            ios: 'chicken/index.html',
+            other: 'chicken/index.html'
+        },
+        baBallon: {
+            ios: 'ba/index.html',
+            other: 'ba/index.html'
+        },
+        mines: {
+            ios: 'mines/index.html',
+            other: 'mines/index.html'
         }
     };
             var url = isIOS ? links[game].ios : links[game].other;

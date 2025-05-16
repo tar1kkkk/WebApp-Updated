@@ -1,1 +1,0 @@
-# mimines.github.io

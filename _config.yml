@@ -1,0 +1,34 @@
+# Настройки для Jekyll
+baseurl: "/WebApp-Updated" # имя вашего репозитория
+url: "https://username.github.io" # замените на ваш GitHub username
+
+# Настройки сайда
+title: Игровой Портал
+description: Коллекция увлекательных игр
+email: your-email@example.com
+twitter_username: username
+github_username:  username
+
+# Настройки сборки
+markdown: kramdown
+plugins:
+  - jekyll-feed
+
+# Отключаем обработку Jekyll для GitHub Pages
+include: ["*"]
+
+theme: jekyll-theme-cayman
+
+# Настройки для GitHub Pages
+remote_theme: pages-themes/cayman@v0.2.0
+
+# Оптимизации
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
+  ignore:
+    envs: [development]

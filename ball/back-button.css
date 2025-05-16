@@ -1,0 +1,24 @@
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u043au043du043eu043fu043au0438 BACK */
+.back-button {
+  display: inline-block;
+  background-color: rgba(255, 110, 110, 0.8);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 40px;
+  font-size: 18px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 90, 90, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
