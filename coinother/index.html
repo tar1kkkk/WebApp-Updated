@@ -444,9 +444,9 @@
     </div>
 
     <button id="flipButton">БРОСИТЬ</button>
-    <button id="returnButton" onclick="location.href="../index.html"">Вернуться</button>
+    <button id="returnButton" onclick="location.href='../index.html'">Вернуться</button>
     <button id="resetButton" style="display: none; margin-top: 20px;" class="flipButton">ЗАНОВО</button>
-    <button id="backButton" onclick="window.location.href="../index.html"">НАЗАД</button>
+    <button id="backButton" onclick="window.location.href='../index.html'">НАЗАД</button>
     <div id="resultText"></div>
 
     <audio id="not-sound" src="coinnotify.mp3"></audio>
@@ -529,7 +529,7 @@
 
         returnButton.addEventListener("touchend", (e) => {
             returnButton.classList.remove("active");
-            location.href = 'https://negociowin.ru/'; // Вызов функции при завершении касания
+            location.href = '../index.html'; // Вызов функции при завершении касания
         });
 
         document.getElementById("flipButton").addEventListener("click", () => {
