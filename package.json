@@ -4,7 +4,7 @@
   "description": "Игровой портал с коллекцией мини-игр",
   "scripts": {
     "build": "node vercel-build.js",
-    "start": "serve -s .",
+    "start": "serve -s -p 5000 .",
     "vercel-build": "npm run build"
   },
   "engines": {
