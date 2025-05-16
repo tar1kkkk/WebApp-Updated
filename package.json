@@ -1,0 +1,11 @@
+{
+  "name": "webapp-updated",
+  "version": "1.0.0",
+  "description": "Игровой портал с коллекцией мини-игр",
+  "scripts": {
+    "build": "echo 'No build step required for static site'
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
