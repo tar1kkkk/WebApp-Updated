@@ -1,7 +1,7 @@
 # Include all files by default
 **/*
 
-# Exclude development and system files
+# Exclude only development and system files
 .git
 .gitignore
 .vercel
