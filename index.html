@@ -25,7 +25,7 @@
         bgImg.onerror = function() {
             console.error('Ошибка загрузки фонового изображения');
         };
-        bgImg.src = 'fon.png';
+        bgImg.src = '/fon.png';
         
         // Проверка загрузки скриптов
         window.addEventListener('error', function(e) {
@@ -49,11 +49,11 @@
     <style>
         @font-face {
             font-family: 'Intro';
-            src: url('intro.otf') format('opentype');
+            src: url('/intro.otf') format('opentype');
         }
 
         body {
-            background: url('fon.png') no-repeat center center fixed;
+            background: url('/fon.png') no-repeat center center fixed;
             background-size: cover;
             background-color: #333; /* резервный цвет фона */
             color: #fff;
@@ -1008,10 +1008,10 @@
 
 <div class="tab">
     <button class="tablinks games-icon" data-tab="Games" onclick="openTab(event, 'Games', this)">
-        <img src="game.png" alt="Игры">
+        <img src="/game.png" alt="Игры">
     </button>
     <button class="tablinks contact-icon" data-tab="Contact" onclick="openTab(event, 'Contact', this)">
-        <img src="money.png" alt="Контакты">
+        <img src="/money.png" alt="Контакты">
     </button>
 </div>
 
