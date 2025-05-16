@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Вызываем предзагрузку изображений при загрузке страницы
     preloadImages([
-        'images/cell_1.png',
-        'images/cell_2.png',
-        'images/star.png',
-        'images/minus.png',
-        'images/plus.png'
+        '/mines/images/cell_1.png',
+        '/mines/images/cell_2.png',
+        '/mines/images/star.png',
+        '/mines/images/minus.png',
+        '/mines/images/plus.png'
     ]);
 
     function getStarsText(count) {
