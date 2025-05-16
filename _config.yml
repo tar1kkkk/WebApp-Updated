@@ -1,23 +1,50 @@
-# Настройки для Jekyll
-baseurl: "/WebApp-Updated" # имя вашего репозитория
-url: "https://username.github.io" # замените на ваш GitHub username
+# Minimal Jekyll configuration
+# This file is kept for compatibility but Jekyll processing is disabled by .nojekyll
 
-# Настройки сайда
-title: Игровой Портал
-description: Коллекция увлекательных игр
-email: your-email@example.com
-twitter_username: username
-github_username:  username
+# Base settings
+baseurl: "" # Empty for root, or "/your-repo-name" if using GitHub Pages
+url: "" # Your site's base URL (e.g., "https://yourusername.github.io")
 
-# Настройки сборки
+# Site settings
+title: "Игровой Портал"
+description: "Коллекция увлекательных игр"
+
+# Build settings
 markdown: kramdown
-plugins:
-  - jekyll-feed
+plugins: []
 
-# Отключаем обработку Jekyll для GitHub Pages
+# Include all files (no Jekyll processing)
 include: ["*"]
 
-theme: jekyll-theme-cayman
+# Exclude these files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/
+  - README.md
+  - package.json
+  - package-lock.json
+  - .gitignore
+  - .nojekyll
+
+# Disable Jekyll's default processing
+future: false
+show_drafts: false
+limit_posts: 0
+keep_files: ["assets", "mines"]
+
+# Disable directory output for static site
+permalink: none
+
+# Disable default collections
+collections: {}
+
+defaults: []
+
+# Disable feed generation
+feed:
+  enabled: false
 
 # Настройки для GitHub Pages
 remote_theme: pages-themes/cayman@v0.2.0
